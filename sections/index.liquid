@@ -2,11 +2,16 @@
 {% assign out_of_stock_products = collections['collection-1'].products | where: 'available', false | sort: 'price' | reverse %}
 {% assign concat_products = in_stock_products | concat: out_of_stock_products %}
 
+{% paginate concat_products by 3 %}
+
 <ul>
 {%- for product in concat_products -%}
   <li>{{ product.title  }} : {{ product.price | money }} : {{ product.available }}</li>
 {%- endfor -%}
 </ul>
+
+{{ paginate | default_pagination }}
+{% endpaginate %}
 
 {% comment %}
 {% endcomment %}
