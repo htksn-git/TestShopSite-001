@@ -249,6 +249,10 @@
 
     {% sections 'header-group' %}
 
+    {% if template == 'index' %}
+    {% section 'index' %}
+    {% endif %}
+
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
@@ -293,5 +297,6 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script>console.log("現在のテンプレート : {{ template }}");</script>
   </body>
 </html>
